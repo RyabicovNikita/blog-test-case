@@ -1,0 +1,2 @@
+export const getBlogs = () => fetch("https://jsonplaceholder.typicode.com/posts").then((res) => res.json()).catch((e) => console.error(e));
+export const getBlogByID = (id:number) => fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then((res) => res.json()).catch((e) => console.error(e));
