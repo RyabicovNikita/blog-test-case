@@ -1,40 +1,34 @@
+import "./BlogCard.scss";
 import { Reactions } from "../../../../components";
 import { BlogProps } from "../../../../types";
 
 const Button = (props: { text: string; onClick?: () => void }) => (
-  <button className="main__card-button" onClick={props.onClick}>
-    {props.text}
-  </button>
+    <button className="btn" onClick={props.onClick}>
+        {props.text}
+    </button>
 );
 
 const BlogMini = (props: BlogProps) => (
-  <div className={"main__card"}>
-    <img
-      src={props.imageUrl}
-      alt="Картинка статьи"
-      className="main__card-img"
-    />
-    <h2 className="main__card-header">{props.title}</h2>
-    <div className="main__card-container">
-      <Reactions />
-      <Button text="Читать далее" />
+    <div className="card">
+        <img src={props.imageUrl} alt="Картинка статьи" className="card__img" />
+        <h2 className="card__header">{props.title}</h2>
+        <div className="card__container">
+            <Reactions />
+            <Button text="Читать далее" />
+        </div>
     </div>
-  </div>
 );
 
 const BlogFullScreen = (props: BlogProps) => (
-  <div className={"main__card fullScreen"}>
-    <img
-      src={props.imageUrl}
-      alt="Картинка статьи"
-      className="main__card-img"
-    />
-    <div className="main__card-container">
-      <h2 className="main__card-header">{props.title}</h2>
-      <Reactions />
+    <div className={"card fullScreen"}>
+        <img src={props.imageUrl} alt="Картинка статьи" className="card__img" />
+        <div className="card__container">
+            <h2 className="card__header">{props.title}</h2>
+            <Reactions />
+        </div>
+        <p className="card__content">{props.body}</p>
     </div>
-    <p className="main__card-content">{props.body}</p>
-  </div>
 );
 
-export const BlogCard = (props: BlogProps) => props.fullScreen ? <BlogFullScreen {...props} /> : <BlogMini {...props} />;
+export const BlogCard = (props: BlogProps) =>
+    props.fullScreen ? <BlogFullScreen {...props} /> : <BlogMini {...props} />;
